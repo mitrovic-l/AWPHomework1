@@ -1,0 +1,14 @@
+<div>
+    <h3>Configuration page</h3>
+    <br>
+    <div>
+      <form class="mb-5" (submit)="setToken()">
+        <div class="form-group mb-2">
+          <label for="token">Token</label>
+          <input type="text" class="form-control" id="token" name="token" placeholder="Your token" [(ngModel)]="token">
+        </div>
+        <button type="submit" class="btn btn-primary">Save token</button>
+        <button type="button" class="btn btn-outline-danger float-right" id="removeTokenBtn" (click)="clearToken()">Remove token</button>
+      </form>
+    </div>
+  </div>
