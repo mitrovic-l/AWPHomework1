@@ -9,13 +9,16 @@ import { OnInit } from '@angular/core';
 })
 export class LangdetectionComponent implements OnInit {
   text: string;
+  clean: boolean;
   detectionRequest: FormGroup;
   constructor(private langdetectionService: LangdetectionService, private formBuilder: FormBuilder){
     this.text = '';
+    this.clean = false;
     this.detectionRequest = this.formBuilder.group({
       // Odgovarajuce HTML elemente cemo povezati atributom formControlName="..."
       text: ['', Validators.required],
-      lang: ['', Validators.required]
+      lang: ['', Validators.required],
+      clean: [false]
       
     })
   }
@@ -23,7 +26,7 @@ export class LangdetectionComponent implements OnInit {
     
   }
   checkLanguage(): void {
-    this.langdetectionService.detectLanguage(this.text).subscribe(response => {
+    this.langdetectionService.detectLanguage(this.text, this.clean).subscribe(response => {
       console.log(JSON.stringify(response));
       let langs = response.detectedLangs;
       let message = 'Detected languages for: ' +this.text  + '\n';

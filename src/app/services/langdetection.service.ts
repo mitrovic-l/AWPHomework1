@@ -14,9 +14,13 @@ export class LangdetectionService {
   private readonly apiUrl = environment.apiUrl+ '/li/v1';
 
   constructor(private httpClient: HttpClient) { }
-  detectLanguage(text1: string): Observable<LangDetectionResponse>{
+  detectLanguage(text1: string, clean: boolean): Observable<LangDetectionResponse>{
     let token = localStorage.getItem('token');
     let url = '/?text='+text1+'&token='+token;
+    if (clean === true) {
+      console.log("UKLJUCEN CLEAN");
+      url = '/?text=' + text1 + '&clean=' + clean + '&token=' + token;
+    }
     let a = this.apiUrl + url;
     console.log("OVO JE URL ZA LANGDETECTION: " + a);
     

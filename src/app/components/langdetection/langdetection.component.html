@@ -5,6 +5,12 @@
             <div class="form-group">
                 <label for="text1">Text</label>
                 <input type="text" class="form-control" id="text" [(ngModel)] = "text" [ngModelOptions]="{standalone: true}"/>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="clean" [(ngModel)] = "clean" [ngModelOptions]="{standalone: true}">
+                    <label class="form-check-label" for="clean">
+                      Clean
+                    </label>
+                  </div>
             </div>
             <button  type="submit" class="btn btn-primary">Submit</button>
     
