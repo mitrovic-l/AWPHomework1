@@ -7,3 +7,11 @@ export interface SimilarityRequest{
     text1: string;
     text2: string;
 }
+export interface Lang{
+    lang: string;
+    confidence: number;
+}
+export interface LangDetectionResponse{
+    timestamp: string;
+    time: number;
+}

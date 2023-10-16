@@ -28,14 +28,12 @@ export class SimilarityComponent implements OnInit{
     
   }
   checkSimilarity(): void {
-    this.text1 = (<HTMLInputElement>document.getElementById("text1")).value;
-    this.text2 = (<HTMLInputElement>document.getElementById("text2")).value;
     console.log('aaaaa');
     console.log('Tekst je'+this.text1);
     
     this.similarityService.getSimilarity(this.text1, this.text2).subscribe(response => {
-      console.log(response);
-      alert(JSON.stringify(response));
+      console.log(JSON.stringify(response));
+      //alert(JSON.stringify(response));
       return response;
       },
       error => {
