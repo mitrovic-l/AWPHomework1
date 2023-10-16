@@ -30,8 +30,10 @@ export class SimilarityComponent implements OnInit{
   checkSimilarity(): void {
     console.log('aaaaa');
     console.log('Tekst je'+this.text1);
-    
-    this.similarityService.getSimilarity(this.text1, this.text2).subscribe(response => {
+    this.text1 = this.text1.replaceAll(' ', '%20');
+    this.text2 = this.text2.replaceAll(' ', '%20');
+
+    this.similarityService.getSimilarity(this.text1.replace("\ \g", "%20"), this.text2.replace("\ \g", "%20")).subscribe(response => {
       console.log(JSON.stringify(response));
       //alert(JSON.stringify(response));
       return response;

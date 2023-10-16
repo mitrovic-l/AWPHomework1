@@ -16,7 +16,7 @@ import { LangdetectionComponent } from './components/langdetection/langdetection
     ConfigurationComponent,
     HomeComponent,
     SimilarityComponent,
-    LangdetectionComponent
+    LangdetectionComponent,
   ],
   imports: [
     BrowserModule,

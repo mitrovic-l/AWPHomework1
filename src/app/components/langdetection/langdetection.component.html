@@ -1,1 +1,12 @@
-<p>langdetection works!</p>
+<div>
+    <h3>Language detection</h3>
+    <br />
+        <form [formGroup]="detectionRequest" (submit)="checkLanguage()" class="mb-5">
+            <div class="form-group">
+                <label for="text1">Text</label>
+                <input type="text" class="form-control" id="text" [(ngModel)] = "text" [ngModelOptions]="{standalone: true}"/>
+            </div>
+            <button  type="submit" class="btn btn-primary">Submit</button>
+    
+        </form>
+</div>

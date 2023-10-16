@@ -4,9 +4,9 @@
         <form [formGroup]="similarityRequest" (submit)="checkSimilarity()" class="mb-5">
             <div class="form-group">
                 <label for="text1">Text 1</label>
-                <input type="text" class="form-control" id="text1"/>
+                <input type="text" class="form-control" id="text1" [(ngModel)] = "text1" [ngModelOptions]="{standalone: true}"/>
                 <label for="text2">Text 2</label>
-                <input type="text" class="form-control" id="text2"/>
+                <input type="text" class="form-control" id="text2" [(ngModel)] = "text2" [ngModelOptions]="{standalone: true}"/>
             </div>
             <button  type="submit" class="btn btn-primary">Submit</button>
     

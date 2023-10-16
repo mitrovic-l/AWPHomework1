@@ -14,4 +14,9 @@ export interface Lang{
 export interface LangDetectionResponse{
     timestamp: string;
     time: number;
+    detectedLangs: Lang[]
+}
+export interface Lang{
+    lang: string;
+    confidence: number;
 }
