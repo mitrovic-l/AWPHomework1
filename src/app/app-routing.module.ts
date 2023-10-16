@@ -6,6 +6,7 @@ import { authGuardGuard } from './guard/auth-guard.guard';
 import { SimilarityComponent } from './components/similarity/similarity.component';
 import { LangdetectionComponent } from './components/langdetection/langdetection.component';
 import { HistoryComponent } from './components/history/history.component';
+import { EntityextractionComponent } from './components/entityextraction/entityextraction.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     path: "history",
     component: HistoryComponent,
+    canActivate: [authGuardGuard]
+  },
+  {
+    path: "extraction",
+    component: EntityextractionComponent,
     canActivate: [authGuardGuard]
   }
 ];

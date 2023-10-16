@@ -1,7 +1,7 @@
 export interface SimilarityResponse {
     lang: string;
     langConfidence: string;
-    similarity: string;
+    similarity: number;
 }
 export interface SimilarityRequest {
     text1: string;
@@ -20,6 +20,7 @@ export interface Lang {
     lang: string;
     confidence: number;
 }
+//History
 export class History {
     url: string;
     date: Date;
@@ -33,5 +34,30 @@ export class History {
     }
     setDate(date: Date) {
         this.date = date;
+    }
+}
+//Entity Extraction
+export class ImageEE{
+    full:string;
+    thumbnail:string;
+    constructor(full:string, thumbnail:string){
+        this.full = full;
+        this.thumbnail = thumbnail;
+    }
+}
+export class ResponseEE{
+    abstract: string;
+    categories: [string];
+    types: [string];
+    confidence: number;
+    uri: string;
+    imageEE: ImageEE;
+    constructor(abstract: string, categories: [string], types: [string], confidence: number, uri: string, imageEE: ImageEE){
+        this.abstract = abstract;
+        this.categories = categories;
+        this.types = types;
+        this.confidence = confidence;
+        this.uri = uri;
+        this.imageEE = imageEE;
     }
 }

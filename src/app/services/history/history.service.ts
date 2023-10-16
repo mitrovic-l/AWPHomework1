@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { History } from '../model';
+import { History } from '../../model';
 
 @Injectable({
   providedIn: 'root'

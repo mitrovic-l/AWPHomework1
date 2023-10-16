@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SimilarityRequest } from 'src/app/model';
-import { TextSimilarityService } from 'src/app/services/text-similarity.service';
+import { TextSimilarityService } from 'src/app/services/text-similarity/text-similarity.service';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Route, Router} from "@angular/router";
-import { HistoryService } from 'src/app/services/history.service';
+import { HistoryService } from 'src/app/services/history/history.service';
 
 @Component({
   selector: 'app-similarity',

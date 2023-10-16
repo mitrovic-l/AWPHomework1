@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SimilarityComponent } from './components/similarity/similarity.component';
 import { LangdetectionComponent } from './components/langdetection/langdetection.component';
 import { HistoryComponent } from './components/history/history.component';
+import { EntityextractionComponent } from './components/entityextraction/entityextraction.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { HistoryComponent } from './components/history/history.component';
     SimilarityComponent,
     LangdetectionComponent,
     HistoryComponent,
+    EntityextractionComponent,
   ],
   imports: [
     BrowserModule,

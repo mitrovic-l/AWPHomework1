@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { SimilarityResponse } from '../model';
+import { SimilarityResponse } from '../../model';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { HistoryService } from './history.service';
-import { History } from '../model';
+import { HistoryService } from '../history/history.service';
+import { History } from '../../model';
 
 @Injectable({
   providedIn: 'root'

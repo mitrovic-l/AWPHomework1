@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment.development';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LangDetectionResponse } from '../model';
-import { HistoryService } from './history.service';
-import { History } from '../model';
+import { LangDetectionResponse } from '../../model';
+import { HistoryService } from '../history/history.service';
+import { History } from '../../model';
 
 
 

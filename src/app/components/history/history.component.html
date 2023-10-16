@@ -1,4 +1,7 @@
 <h3>Request History</h3>
+<br>
+<br>
+<h5 *ngIf="isHistoryEmpty"> 0 requests made </h5>
 <ul>
   <li *ngFor="let h of historyList">
      <div class="historyDiv">

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { LangdetectionService } from 'src/app/services/langdetection.service';
+import { LangdetectionService } from 'src/app/services/langdetection/langdetection.service';
 import { OnInit } from '@angular/core';
 @Component({
   selector: 'app-langdetection',

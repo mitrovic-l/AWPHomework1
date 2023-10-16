@@ -1,0 +1,64 @@
+<div>
+  <h3>Language detection</h3>
+  <br />
+  <form [formGroup]="eeRequest" (submit)="extractEntities()" class="mb-5">
+    <div class="form-group">
+      <label for="text1">Text</label>
+      <input
+        type="text"
+        class="form-control"
+        id="text"
+        [(ngModel)]="text"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="image"
+          [(ngModel)]="image"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <label class="form-check-label" for="image"> Image </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="abstract"
+          [(ngModel)]="abstract"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <label class="form-check-label" for="abstract"> Abstract </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="categories"
+          [(ngModel)]="categories"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <label class="form-check-label" for="categories"> Categories </label>
+      </div>
+      <br>
+      <label for="confidence" class="form-label">Confidence {{confidence}}</label>
+      <input
+        type="range"
+        class="form-range"
+        min="0"
+        max="1"
+        step="0.1"
+        id="confidence"
+        [(ngModel)]="confidence"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <br>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
