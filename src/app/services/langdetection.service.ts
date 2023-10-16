@@ -4,6 +4,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LangDetectionResponse } from '../model';
+import { HistoryService } from './history.service';
+import { History } from '../model';
 
 
 
@@ -13,7 +15,7 @@ import { LangDetectionResponse } from '../model';
 export class LangdetectionService {
   private readonly apiUrl = environment.apiUrl+ '/li/v1';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private historyService: HistoryService) { }
   detectLanguage(text1: string, clean: boolean): Observable<LangDetectionResponse>{
     let token = localStorage.getItem('token');
     let url = '/?text='+text1+'&token='+token;
@@ -23,7 +25,7 @@ export class LangdetectionService {
     }
     let a = this.apiUrl + url;
     console.log("OVO JE URL ZA LANGDETECTION: " + a);
-    
+    this.historyService.addHistory(new History(a, new Date()));
     return this.httpClient.get<LangDetectionResponse>(a);
   }
 }

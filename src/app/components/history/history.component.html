@@ -1,0 +1,10 @@
+<h3>Request History</h3>
+<ul>
+  <li *ngFor="let h of historyList">
+     <div class="historyDiv">
+      <b> GET {{h.url}} </b>
+        {{h.date |  date: 'dd/MM/yyyy'}} | {{h.date | date: 'hh:mm:ss'}}
+     </div>  
+     <br>
+  </li>
+</ul>

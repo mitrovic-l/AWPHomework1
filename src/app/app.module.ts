@@ -8,6 +8,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SimilarityComponent } from './components/similarity/similarity.component';
 import { LangdetectionComponent } from './components/langdetection/langdetection.component';
+import { HistoryComponent } from './components/history/history.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { LangdetectionComponent } from './components/langdetection/langdetection
     HomeComponent,
     SimilarityComponent,
     LangdetectionComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
