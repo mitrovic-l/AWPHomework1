@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { SimilarityResponse } from '../model';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +17,12 @@ export class TextSimilarityService {
   
   getSimilarity(text1: string, text2: string): Observable<SimilarityResponse>{
     let token = localStorage.getItem('token');
-    let text1Formatted = text1.replaceAll(" ", "%20");
-    let text2Formatted = text2.replaceAll(" ", "%20");
-    let url = '/?text1='+text1Formatted+ '&text2='+text2Formatted+'&token='+token;
+    let url = '/?text1='+text1+ '&text2='+text2+'&token='+token;
     console.log(url);
+    let a = this.apiUrl + url;
+    console.log("Pun url je " + a);
     
-    return this.httpClient.get<SimilarityResponse>(this.apiUrl+url);
-  }
+    return this.httpClient.get<SimilarityResponse>(a)
+    };
+  
 }
