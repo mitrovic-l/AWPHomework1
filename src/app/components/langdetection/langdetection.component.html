@@ -13,6 +13,12 @@
                   </div>
             </div>
             <button  type="submit" class="btn btn-primary">Submit</button>
-    
         </form>
+        <br>
+        <br>
+        <br>
+        <div *ngIf="results">
+            <h5>Results: </h5>
+            <div [innerHTML]="message"></div>
+        </div>
 </div>

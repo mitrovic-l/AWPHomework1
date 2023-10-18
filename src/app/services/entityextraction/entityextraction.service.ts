@@ -23,19 +23,25 @@ export class EntityextractionService {
     let urlText = '/?text=' + text;
     let urlInclude = '&include=';
     if (image){
-      urlInclude +='image ';
+      urlInclude +='image%2C';
     }
     if (abstract){
-      urlInclude +='abstract ';
+      urlInclude +='abstract%2C';
     }
     if (categories){
-      urlInclude +='categories ';
+      urlInclude +='categories';
     }
     let urlConfidence = '&min_confidence=' + confidence;
     let tokenUrl = '&token='+token;
-    let fullUrl = urlText + urlConfidence + urlInclude + tokenUrl;
-    console.log("OVO JE URL!!!!: " + fullUrl);
+    let fullUrl = '';
+    if (confidence != 0.6){
+      fullUrl = urlText + urlConfidence + urlInclude + tokenUrl;
+    } else{
+      fullUrl = urlText  + urlInclude + tokenUrl;
+    }
     let a = this.apiUrl + fullUrl;
+    console.log("OVO JE URL!!!!: " + a);
+
     this.historyService.addHistory( new History(a, new Date()));
     return this.httpClient.get<ResponseEE>(a);
   }

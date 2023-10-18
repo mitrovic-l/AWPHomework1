@@ -37,27 +37,33 @@ export class History {
     }
 }
 //Entity Extraction
-export class ImageEE{
-    full:string;
-    thumbnail:string;
-    constructor(full:string, thumbnail:string){
-        this.full = full;
-        this.thumbnail = thumbnail;
-    }
+export interface Image{
+    full: string;
+    thumbnail: string;
 }
+export interface Annotation{
+    spot: string;
+    confidence: number;
+    title: string;
+    uri: string;
+    abstract: string;
+    categories: string[];
+    image: Image;
+}
+
 export class ResponseEE{
     abstract: string;
     categories: [string];
     types: [string];
     confidence: number;
     uri: string;
-    imageEE: ImageEE;
-    constructor(abstract: string, categories: [string], types: [string], confidence: number, uri: string, imageEE: ImageEE){
+    annotations: Annotation[];
+    constructor(abstract: string, categories: [string], types: [string], confidence: number, uri: string){
         this.abstract = abstract;
         this.categories = categories;
         this.types = types;
         this.confidence = confidence;
         this.uri = uri;
-        this.imageEE = imageEE;
+        this.annotations = [];
     }
 }

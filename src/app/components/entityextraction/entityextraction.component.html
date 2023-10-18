@@ -61,4 +61,26 @@
     <br>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+        <br>
+        <br>
+        <div *ngIf="results">
+            <h5>Results: </h5>
+            <ul *ngFor="let res of annotationResults">
+              <li>
+                <b>{{ res.spot }}</b>
+                <p *ngIf="abstract"><u>ABSTRACT:</u>  {{ res.abstract }}</p>
+                <br>
+                <p *ngIf="categories"><u>Categories: </u></p>
+                <ul *ngFor="let cat of res.categories">
+                  <li>
+                    {{ cat }}
+                  </li>
+                </ul>
+                <p *ngIf="image"><u>Image: </u></p>
+                <img *ngIf="image" [src]="res.image.thumbnail" alt="Image">
+              </li>
+              <br>
+              <hr>
+            </ul>
+        </div>
 </div>

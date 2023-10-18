@@ -11,9 +11,13 @@ export class LangdetectionComponent implements OnInit {
   text: string;
   clean: boolean;
   detectionRequest: FormGroup;
+  results: boolean;
+  message: string;
   constructor(private langdetectionService: LangdetectionService, private formBuilder: FormBuilder){
     this.text = '';
     this.clean = false;
+    this.results = false;
+    this.message = '';
     this.detectionRequest = this.formBuilder.group({
       // Odgovarajuce HTML elemente cemo povezati atributom formControlName="..."
       text: ['', Validators.required],
@@ -23,7 +27,10 @@ export class LangdetectionComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    
+    this.text = '';
+    this.results = false;
+    this.message = '';
+    this.clean = false;
   }
   checkLanguage(): void {
     this.langdetectionService.detectLanguage(this.text, this.clean).subscribe(response => {
@@ -31,15 +38,18 @@ export class LangdetectionComponent implements OnInit {
       let langs = response.detectedLangs;
       let message = 'Detected languages for: ' +this.text  + '\n';
       for (let lang of langs) {
-        let msg = lang.lang + ' Confidence: ' + lang.confidence + '\n';
+        let msg ='[Language: ' + lang.lang + ' | Confidence: ' + lang.confidence + ']\n';
         message += msg;
       }
-      alert(message);
-      this.text = '';
+      message = message.replaceAll('\n', '<br>');
+      this.message = message;
+      this.results = true;
+      // alert(message);
+      // this.text = '';
       return response;
     }, err => {
       console.log(err);
-      
+      alert(JSON.stringify(err.error));
     })
   }
 

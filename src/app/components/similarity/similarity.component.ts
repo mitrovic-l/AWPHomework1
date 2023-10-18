@@ -13,10 +13,14 @@ import { HistoryService } from 'src/app/services/history/history.service';
 export class SimilarityComponent implements OnInit{
   text1: string;
   text2: string;
+  results: boolean;
+  message: string;
   similarityRequest: FormGroup;
   constructor(private similarityService: TextSimilarityService, private route: ActivatedRoute, private formBuilder: FormBuilder, private historyService: HistoryService){
     this.text1 = '';
     this.text2 = '';
+    this.results = false;
+    this.message = '';
     this.similarityRequest = this.formBuilder.group({
       // Odgovarajuce HTML elemente cemo povezati atributom formControlName="..."
       // ['default value', [validators]
@@ -25,7 +29,10 @@ export class SimilarityComponent implements OnInit{
     })
   }
   ngOnInit(): void {
-    
+    this.text1 = '';
+    this.text2 = '';
+    this.results = false;
+    this.message = '';
   }
   checkSimilarity(): void {
     console.log('aaaaa');
@@ -34,10 +41,9 @@ export class SimilarityComponent implements OnInit{
     this.similarityService.getSimilarity(this.text1.replace("\ \g", "%20"), this.text2.replace("\ \g", "%20")).subscribe(response => {
       console.log(JSON.stringify(response));
       //alert(JSON.stringify(response));
-      let message = 'Similarity for: \n' + this.text1 + '\n and \n' + this.text2 + '\n is:' + 'Language Confidence: ' + response.langConfidence + '\n Similarity: ' + response.similarity + '\n Language: ' + response.lang;
-      alert(message);
-      this.text1 = '';
-      this.text2 = '';
+      let message = 'Similarity for: <br>' + this.text1 + '<br> and <br>' + this.text2 + '<br> is:' + 'Language Confidence: ' + response.langConfidence + '<br> Similarity: ' + response.similarity + '<br> Language: ' + response.lang;
+      this.results = true;
+      this.message = message;
       return response;
       },
       error => {
