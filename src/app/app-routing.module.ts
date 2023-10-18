@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: "",
     component: HomeComponent,
-    canActivate: [authGuardGuard]
+    // canActivate: [authGuardGuard]
   },
   {
     path: "similarity",

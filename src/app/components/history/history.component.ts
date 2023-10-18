@@ -14,9 +14,6 @@ export class HistoryComponent implements OnInit {
   ngOnInit(): void {
     this.historyList = this.historyService.getHistory();
   }
-  isHistoryEmpty(): boolean {
-    return this.historyList.length === 0;
-  }
 
 
 

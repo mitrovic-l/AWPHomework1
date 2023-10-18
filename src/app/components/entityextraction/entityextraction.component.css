@@ -1,3 +1,7 @@
 li{
     list-style-type: none;
 }
+.resultsdiv{
+    border: 2px solid #151716;
+    padding: 4px;
+}

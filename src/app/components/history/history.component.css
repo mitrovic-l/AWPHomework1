@@ -1,4 +1,7 @@
 .historyDiv{
     border:1px solid black;
-
+    padding: 6px;
+}
+li{
+    list-style: none;
 }

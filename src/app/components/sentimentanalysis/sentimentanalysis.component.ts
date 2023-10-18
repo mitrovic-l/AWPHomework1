@@ -9,7 +9,6 @@ import { SentimentanalysisService } from 'src/app/services/sentimentanalysis/sen
   styleUrls: ['./sentimentanalysis.component.css']
 })
 export class SentimentanalysisComponent implements OnInit {
-  text: string;
   sentimentForm: FormGroup;
   results: boolean;
   message: string;
@@ -21,7 +20,6 @@ export class SentimentanalysisComponent implements OnInit {
     { id: 3, name: 'Italian', value: 'it' }
   ]
   constructor(private formBuilder: FormBuilder, private sentimentService: SentimentanalysisService) {
-    this.text = '';
     this.results = false;
     this.message = '';
     this.type = '';
@@ -33,7 +31,6 @@ export class SentimentanalysisComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.text = '';
     this.results = false;
     this.message = '';
     this.type = '';
@@ -51,12 +48,7 @@ export class SentimentanalysisComponent implements OnInit {
     } else if (this.sentimentForm.value.language === 3) {
       lang = 'it';
     }
-    console.log(lang);
-
-    console.log(this.sentimentForm.value);
     this.sentimentService.analysis(this.sentimentForm.value.text, lang).subscribe(response => {
-      console.log("RESPONSE: ");
-      console.log(JSON.stringify(response));
       this.message += 'Time required: ' + response.time + '<br>';
       this.message += 'Language: ' + response.lang + ' <br>';
       this.message += 'Sentiment Score: ' + response.sentiment.score + ' <br>';
@@ -65,7 +57,6 @@ export class SentimentanalysisComponent implements OnInit {
       this.results = true;
     }, error => {
       console.log(JSON.stringify(error.error));
-
     });
   }
 

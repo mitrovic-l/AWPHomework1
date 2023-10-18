@@ -11,7 +11,6 @@ import { EntityextractionService } from 'src/app/services/entityextraction/entit
 })
 export class EntityextractionComponent implements OnInit {
   eeRequest: FormGroup;
-  text: string;
   confidence: number;
   image: boolean;
   abstract: boolean;
@@ -20,7 +19,6 @@ export class EntityextractionComponent implements OnInit {
   imageResults: string[];
   annotationResults: Annotation[];
   constructor(private entityService: EntityextractionService, private formBuilder: FormBuilder) {
-    this.text = '';
     this.confidence = 0.6;
     this.image = false;
     this.abstract = false;
@@ -29,11 +27,14 @@ export class EntityextractionComponent implements OnInit {
     this.imageResults = [];
     this.annotationResults = [];
     this.eeRequest = this.formBuilder.group({
-      text: ['', Validators.required]
+      text: ['', Validators.required],
+      image: [false],
+      abstract: [false],
+      categories: [false],
+      confidence: [0.6]
     });
   }
   ngOnInit(): void {
-    this.text = '';
     this.confidence = 0.6;
     this.image = false;
     this.abstract = false;
@@ -43,22 +44,21 @@ export class EntityextractionComponent implements OnInit {
     this.results = false;
   }
   extractEntities(): void {
-    console.log(this.text + ' ' + this.image + this.abstract + this.categories);
-    this.entityService.extractEntities(this.text, this.confidence, this.image, this.abstract, this.categories).subscribe(response => {
-      console.log('RESPONSE ZA EE: ' + JSON.stringify(response));
+    this.entityService.extractEntities(this.eeRequest.get('text')?.value, this.confidence, this.eeRequest.get('image')?.value, this.eeRequest.get('abstract')?.value, this.eeRequest.get('categories')?.value).subscribe(response => {
       let annotations = response.annotations;
+      this.image = this.eeRequest.get('image')?.value;
+      this.abstract = this.eeRequest.get('abstract')?.value;
+      this.categories = this.eeRequest.get('categories')?.value;
       for (let a of annotations) {
         this.annotationResults.push(a);
-        console.log('ANOTACIJA:  + ' + JSON.stringify(a.abstract) + ' ' + JSON.stringify(a.categories) + ' ' + JSON.stringify(a.image)) ;
-        console.log("IMAGE: + " + JSON.stringify(a.image));
         this.imageResults.push(a.image.thumbnail);
+        console.log(a.image.thumbnail);
       }
       this.results = true;
     },
       error => {
         console.log("GRESKA: " + JSON.stringify(error.error.message));
         alert("Language Error: " + JSON.stringify(error.error.message));
-        this.text = '';
         this.confidence = 0.6;
         this.image = false;
         this.abstract = false;

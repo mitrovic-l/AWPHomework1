@@ -1,21 +1,17 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a [routerLink]="'/'" class="navbar-brand">Text Analytics</a>
+      <a [routerLink]="'/'" class="navbar-brand" routerLinkActive="active-link" aria-current="page">Text Analytics</a>
       <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a [routerLink]="'/'" class="nav-link active" aria-current="page">Home</a>
-          <a [routerLink]="'/config'" class="nav-link active" aria-current="page">Configuration</a>
-          <a [routerLink]="'/similarity'" class="nav-link active" aria-current="page">Text similarity</a>
-          <a [routerLink]="'/detection'" class="nav-link active" aria-current="page">Language detection</a>
-          <a [routerLink]="'/extraction'" class="nav-link active" aria-current="page">Entity Extraction</a>
-          <a [routerLink]="'/sentiment'" class="nav-link active" aria-current="page">Sentiment Analysis</a>
-          
+          <a [routerLink]="'/'" class="nav-link" aria-current="page" routerLinkActive="active-link">Home</a>
+          <a [routerLink]="'/config'" class="nav-link" aria-current="page" routerLinkActive="active-link">Configuration</a>
+          <a [routerLink]="'/extraction'" class="nav-link" aria-current="page" routerLinkActive="active-link">Entity Extraction</a>
+          <a [routerLink]="'/similarity'" class="nav-link" aria-current="page" routerLinkActive="active-link">Text similarity</a>
+          <a [routerLink]="'/detection'" class="nav-link" aria-current="page" routerLinkActive="active-link">Language detection</a>
+          <a [routerLink]="'/sentiment'" class="nav-link" aria-current="page" routerLinkActive="active-link">Sentiment Analysis</a>
+          <a [routerLink]="'/history'" class="nav-link" aria-current="page" routerLinkActive="active-link">History</a>
         </div>
-        <div class="mr-auto">
-          <a [routerLink]="'/history'" class="nav-link active" aria-current="page" style="color: white; margin-right: 8px;">History</a>
-        </div>
-       
       </div>
     </div>
   </nav>

@@ -1,6 +1,8 @@
 <div>
   <h3>Entity extraction</h3>
-  <br />
+  <small>This is a named entity extraction & linking API that performs very well even on short texts, on which many other similar services do not. It currently works on texts in English, French, German, Italian, Portuguese, Russian, Spanish. With this API you will be able to automatically tag your texts, extracting Wikipedia entities and enriching your data.</small>
+  <br/>
+  <br>
   <form [formGroup]="eeRequest" (submit)="extractEntities()" class="mb-5">
     <div class="form-group">
       <label for="text1">Text</label>
@@ -8,17 +10,16 @@
         type="text"
         class="form-control"
         id="text"
-        [(ngModel)]="text"
-        [ngModelOptions]="{ standalone: true }"
+        [formControlName]="'text'"
       />
+      <div class="error-message text-danger" *ngIf="eeRequest.get('text')?.errors?.['required']"> Text is required! </div>
       <div class="form-check">
         <input
           class="form-check-input"
           type="checkbox"
           value=""
           id="image"
-          [(ngModel)]="image"
-          [ngModelOptions]="{ standalone: true }"
+          [formControlName]="'image'"
         />
         <label class="form-check-label" for="image"> Image </label>
       </div>
@@ -28,8 +29,7 @@
           type="checkbox"
           value=""
           id="abstract"
-          [(ngModel)]="abstract"
-          [ngModelOptions]="{ standalone: true }"
+          [formControlName]="'abstract'"
         />
         <label class="form-check-label" for="abstract"> Abstract </label>
       </div>
@@ -39,8 +39,7 @@
           type="checkbox"
           value=""
           id="categories"
-          [(ngModel)]="categories"
-          [ngModelOptions]="{ standalone: true }"
+          [formControlName]="'categories'"
         />
         <label class="form-check-label" for="categories"> Categories </label>
       </div>
@@ -59,11 +58,11 @@
       <br>
     </div>
     <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button [disabled]="!eeRequest.valid" type="submit" class="btn btn-primary">Submit</button>
   </form>
         <br>
         <br>
-        <div *ngIf="results">
+        <div *ngIf="results" class="resultsdiv">
             <h5>Results: </h5>
             <ul *ngFor="let res of annotationResults">
               <li>

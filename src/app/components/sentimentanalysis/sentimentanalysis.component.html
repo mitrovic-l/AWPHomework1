@@ -1,10 +1,13 @@
 <div>
     <h3>Sentiment analysis</h3>
-    <br />
+    <small>This API analyses a text and tells whether the expressed opinion is positive, negative, or neutral. Given a short sentence, it returns a label representing the identified sentiment, along with a numeric score ranging from strongly positive (1.0) to extremely negative (-1.0). </small>
+    <br/>
+    <br>
         <form [formGroup]="sentimentForm"  (submit)="analysis()" class="mb-5">
             <div class="form-group">
                 <label for="text1">Text</label>
-                <input type="text" class="form-control" id="text" formControlName="text"/>
+                <input type="text" class="form-control" id="text" [formControlName]="'text'"/>
+                <div class="error-message text-danger" *ngIf="sentimentForm.get('text')?.errors?.['required']"> Text is required! </div>
                 <label for="lang">Choose input language</label><br>
                 <select formControlName="language" id="lang">
                     <option *ngFor="let language of languages" [ngValue]="language.id">{{language.name}}</option>
@@ -12,12 +15,12 @@
                   <br>
             </div>
             <br>
-            <button  type="submit" class="btn btn-primary">Submit</button>
+            <button [disabled]="!sentimentForm.valid" type="submit" class="btn btn-primary">Submit</button>
         </form>
         <br>
         <br>
         <br>
-        <div *ngIf="results">
+        <div *ngIf="results" class="resultsdiv">
             <h5>Results: </h5>
             <div [innerHTML]="message"></div>
             <div [ngStyle]="getStyleForType()">

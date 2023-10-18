@@ -4,8 +4,9 @@
 <ul>
   <li *ngFor="let h of historyList">
      <div class="historyDiv">
-      <b> GET {{h.url}} </b>
-        {{h.date |  date: 'dd/MM/yyyy'}} | {{h.date | date: 'hh:mm:ss'}}
+      <i> GET {{h.url}} </i>
+      <br>
+        Date and time: {{h.date |  date: 'dd.MM.yyyy'}} at {{h.date | date: 'hh:mm:ss'}}
      </div>  
      <br>
   </li>

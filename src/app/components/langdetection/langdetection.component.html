@@ -1,23 +1,26 @@
 <div>
     <h3>Language detection</h3>
+    <small>Language Detection API is a simple language identification API; it is a tool that may be useful when dealing with texts, so we decided to open it to all our users. It currently supports 96 languages. </small>
+    <br>
     <br />
         <form [formGroup]="detectionRequest" (submit)="checkLanguage()" class="mb-5">
             <div class="form-group">
                 <label for="text1">Text</label>
-                <input type="text" class="form-control" id="text" [(ngModel)] = "text" [ngModelOptions]="{standalone: true}"/>
+                <input type="text" class="form-control" id="text" [formControlName]="'text'"/>
+                <div class="error-message text-danger" *ngIf="detectionRequest.get('text')?.errors?.['required']"> Text is required! </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="clean" [(ngModel)] = "clean" [ngModelOptions]="{standalone: true}">
+                    <input class="form-check-input" type="checkbox" value="" id="clean" [formControlName]="'clean'">
                     <label class="form-check-label" for="clean">
                       Clean
                     </label>
                   </div>
             </div>
-            <button  type="submit" class="btn btn-primary">Submit</button>
+            <button [disabled]="!detectionRequest.valid" type="submit" class="btn btn-primary">Submit</button>
         </form>
         <br>
         <br>
         <br>
-        <div *ngIf="results">
+        <div *ngIf="results" class="resultsdiv">
             <h5>Results: </h5>
             <div [innerHTML]="message"></div>
         </div>

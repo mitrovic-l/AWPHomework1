@@ -1,19 +1,23 @@
 <div>
     <h3>Text similarity</h3>
+    <small>This API is a semantic sentence similarity API optimized on short sentences. With this API you will be able to compare two sentences and get a score of their semantic similarity. It works even if the two sentences don't have any word in common. </small>
+    <br>
     <br />
         <form [formGroup]="similarityRequest" (submit)="checkSimilarity()" class="mb-5">
             <div class="form-group">
                 <label for="text1">Text 1</label>
-                <input type="text" class="form-control" id="text1" [(ngModel)] = "text1" [ngModelOptions]="{standalone: true}"/>
+                <input type="text" class="form-control" id="text1" [formControlName]="'text1'"/>
+                <div class="error-message text-danger" *ngIf="similarityRequest.get('text1')?.errors?.['required']"> Text1 is required! </div>
                 <label for="text2">Text 2</label>
-                <input type="text" class="form-control" id="text2" [(ngModel)] = "text2" [ngModelOptions]="{standalone: true}"/>
+                <input type="text" class="form-control" id="text2" [formControlName]="'text2'"/>
+                <div class="error-message text-danger" *ngIf="similarityRequest.get('text2')?.errors?.['required']"> Text2 is required! </div>
             </div>
-            <button  type="submit" class="btn btn-primary">Submit</button>
+            <button [disabled]="!similarityRequest.valid" type="submit" class="btn btn-primary">Submit</button>
         </form>
         <br>
         <br>
         <br>
-        <div *ngIf="results">
+        <div *ngIf="results" class="resultsdiv">
             <h5>Results: </h5>
             <div [innerHTML]="message"></div>
         </div>
