@@ -7,6 +7,7 @@ import { SimilarityComponent } from './components/similarity/similarity.componen
 import { LangdetectionComponent } from './components/langdetection/langdetection.component';
 import { HistoryComponent } from './components/history/history.component';
 import { EntityextractionComponent } from './components/entityextraction/entityextraction.component';
+import { SentimentanalysisComponent } from './components/sentimentanalysis/sentimentanalysis.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path: "extraction",
     component: EntityextractionComponent,
+    canActivate: [authGuardGuard]
+  },
+  {
+    path: 'sentiment',
+    component: SentimentanalysisComponent,
     canActivate: [authGuardGuard]
   }
 ];

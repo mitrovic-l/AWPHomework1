@@ -67,3 +67,21 @@ export class ResponseEE{
         this.annotations = [];
     }
 }
+
+//Sentiment Analysis
+export interface Sentiment{
+    score: number;
+    type: string;
+}
+export class ResponseSA{
+    time: number;
+    lang: string;
+    langConfidence: number;
+    sentiment: Sentiment;
+    constructor(time: number, lang: string, sentiment: Sentiment, langConfidence: number){
+        this.time = time;
+        this.sentiment = sentiment;
+        this.lang = lang;
+        this.langConfidence = langConfidence;
+    }
+}

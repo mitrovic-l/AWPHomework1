@@ -10,6 +10,7 @@ import { SimilarityComponent } from './components/similarity/similarity.componen
 import { LangdetectionComponent } from './components/langdetection/langdetection.component';
 import { HistoryComponent } from './components/history/history.component';
 import { EntityextractionComponent } from './components/entityextraction/entityextraction.component';
+import { SentimentanalysisComponent } from './components/sentimentanalysis/sentimentanalysis.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { EntityextractionComponent } from './components/entityextraction/entitye
     LangdetectionComponent,
     HistoryComponent,
     EntityextractionComponent,
+    SentimentanalysisComponent,
   ],
   imports: [
     BrowserModule,

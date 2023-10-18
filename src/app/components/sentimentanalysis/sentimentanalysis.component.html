@@ -1,0 +1,27 @@
+<div>
+    <h3>Sentiment analysis</h3>
+    <br />
+        <form [formGroup]="sentimentForm"  (submit)="analysis()" class="mb-5">
+            <div class="form-group">
+                <label for="text1">Text</label>
+                <input type="text" class="form-control" id="text" formControlName="text"/>
+                <label for="lang">Choose input language</label><br>
+                <select formControlName="language" id="lang">
+                    <option *ngFor="let language of languages" [ngValue]="language.id">{{language.name}}</option>
+                  </select>
+                  <br>
+            </div>
+            <br>
+            <button  type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <br>
+        <br>
+        <br>
+        <div *ngIf="results">
+            <h5>Results: </h5>
+            <div [innerHTML]="message"></div>
+            <div [ngStyle]="getStyleForType()">
+               <b> {{ type }} </b>
+              </div>
+        </div>
+</div>
